@@ -121,3 +121,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # Config for dotfiles
 alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
+
+# Aliases
+alias v="nvim"
+alias vdiff="nvim -d"
