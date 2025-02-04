@@ -116,8 +116,8 @@ export PATH=$PATH:/Users/longnv/.local/bin
 # Ruby
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
-export PATH="$HOME/.gem/ruby/3.4.0/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="$PATH:$HOME/.gem/ruby/3.4.0/bin"
+export PATH="$PATH:/opt/homebrew/opt/ruby/bin"
 
 # Config for dotfiles
 alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
@@ -125,3 +125,9 @@ alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/long
 # Aliases
 alias v="nvim"
 alias vdiff="nvim -d"
+
+# Terminal
+export TERM=xterm-256color
+
+# Wezterm
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS/"
