@@ -1,7 +1,7 @@
 ## Introduction
 
 This repository contains my personal dotfiles for setting up a development environment on macOS. It includes configurations for:
-
+- [WezTerm](https://wezterm.org) (if you are new to Terminal and prefer built-in AI features in CLI, use [Warp](https://app.warp.dev/referral/REQYP5) instead). A default MacOS Terminal should work, too.
 - Zsh shell with Oh My Zsh
 - Neovim (with LazyVim)
 - Vim
@@ -33,7 +33,7 @@ This repository contains my personal dotfiles for setting up a development envir
     └── wezterm.lua
 ```
 ## Screenshots
-![Wezterm, Sketchybar](./assets/shell-1.png)
+![WezTerm, Sketchybar](./assets/shell-1.png)
 
 ![Neovim, Sketchybar](./assets/neovim-1.png)
 
