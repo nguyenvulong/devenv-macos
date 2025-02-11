@@ -124,10 +124,14 @@ alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/long
 
 # Aliases
 alias v="nvim"
-alias vdiff="nvim -d"
+alias vd="nvim -d"
+alias cat="bat"
 
 # Terminal
 export TERM=xterm-256color
 
 # Wezterm
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS/"
+
+# Ollama
+export OLLAMA_API_BASE=http://127.0.0.1:11434

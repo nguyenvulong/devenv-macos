@@ -43,7 +43,7 @@ return {
       bottom = 7.5,
    },
    initial_rows = 35,
-   initial_cols = 120,
+   initial_cols = 100,
    adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
    window_frame = {
