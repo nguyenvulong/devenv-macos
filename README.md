@@ -33,14 +33,11 @@ This repository contains my personal dotfiles for setting up a development envir
     └── wezterm.lua
 ```
 ## Screenshots
-![WezTerm, Sketchybar](./assets/shell-1.png)
 
-![Neovim, Sketchybar](./assets/neovim-1.png)
-
-![Wezterm, Tmux](./assets/tmux-1.png)
-
-![Lazygit](./assets/lazygit-1.png)
-
+| Sketchybar | WezTerm, Warp | Neovim, LazyGit | Tmux |
+|----------------------|---------------------|----------------|---------|
+| <img src="./assets/shell-1.png" width="200" height="150" /> | <img src="./assets/neovim-1.png" width="200" height="150" /> | <img src="./assets/tmux-1.png" width="200" height="150" /> | <img src="./assets/lazygit-1.png" width="200" height="150" /> |
+| <img src="./assets/neovim-2.png" width="200" height="150" /> | <img src="./assets/shell-2.png" width="200" height="150" /> | <img src="./assets/vscode_tmux-1.png" width="200" height="150" /> | <img src="./assets/warp-1.png" width="200" height="150" /> |
 
 ## Prerequisites
 
