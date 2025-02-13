@@ -77,7 +77,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(kubectl git fzf-tab zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(
+  tmux
+  kubectl
+  git
+  fzf-tab
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,6 +125,14 @@ export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 export PATH="$PATH:$HOME/.gem/ruby/3.4.0/bin"
 export PATH="$PATH:/opt/homebrew/opt/ruby/bin"
+
+# Rust
+source "$HOME/.cargo/env"
+
+# Go
+export GOPATH="$HOME/.gopath"
+export GOROOT="$HOME/.goroot"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # Config for dotfiles
 alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
