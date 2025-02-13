@@ -132,7 +132,6 @@ source "$HOME/.cargo/env"
 # Go
 export GOPATH="$HOME/.gopath"
 export GOROOT="$HOME/.goroot"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # Config for dotfiles
 alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
