@@ -139,8 +139,8 @@ alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/long
 # Aliases
 alias v="nvim"
 alias vd="nvim -d"
-alias cat="bat"
-alias ls="eza"
+alias cat="BAT_THEME=DarkNeon bat"
+alias ls="eza --icons=always"
 
 # Terminal
 export TERM=xterm-256color
