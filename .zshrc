@@ -141,6 +141,7 @@ alias v="nvim"
 alias vd="nvim -d"
 alias cat="BAT_THEME=DarkNeon bat"
 alias ls="eza --icons=always"
+alias history="history -E"
 
 # Terminal
 export TERM=xterm-256color
