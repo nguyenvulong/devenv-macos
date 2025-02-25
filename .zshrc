@@ -67,7 +67,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -141,13 +146,12 @@ alias v="nvim"
 alias vd="nvim -d"
 alias cat="BAT_THEME=DarkNeon bat"
 alias ls="eza --icons=always"
-alias history="history -E"
 
 # Terminal
 export TERM=xterm-256color
 
 # Wezterm
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS/"
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
 # Ollama
 export OLLAMA_API_BASE=http://127.0.0.1:11434
