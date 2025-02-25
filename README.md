@@ -46,22 +46,24 @@ Before installing these dotfiles, ensure you have the following installed:
 ### Required Tools
 - Git
 - Homebrew
-- Zsh
+- Zsh (default shell for macOS)
 - Oh-my-zsh
 
 ### Package Dependencies
 
-Install these packages using Homebrew:
+All required packages are managed through Homebrew Bundle. To install all dependencies:
+
 ```bash
-brew  install \
-      tmux \
-      neovim \
-      bat \
-      eza \
-      fzf \
-      git \
-      lazygit \
-      wezterm
+# Install Homebrew if you haven't already
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install all dependencies from Brewfile
+brew bundle install
+```
+
+To update the Brewfile with your current packages:
+```bash
+brew bundle dump
 ```
 
 ## Components
@@ -103,33 +105,26 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p
 The Neovim configuration uses LazyVim as the base with additional customizations:
 
 - Package manager: lazy.nvim
-- Theme: Catppuccin (Mocha)
+- Theme: tokyonight-moon
 - LSP support for multiple languages
 - Various coding and UI enhancements
 
 Follow the instruction from [LazyVim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes).
-
 
 ### Sketchybar
 
 Customize your MacOS's menu bar.
 
 ```bash
-brew tap FelixKratz/formulae
-brew install sketchybar
-
 mkdir -p ~/.config/sketchybar/plugins
 cp $(brew --prefix)/share/sketchybar/examples/sketchybarrc ~/.config/sketchybar/sketchybarrc
 cp -r $(brew --prefix)/share/sketchybar/examples/plugins/ ~/.config/sketchybar/plugins/
 ```
+
 ### Others
 - [Rust](https://www.rust-lang.org/)
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-- [lazygit](https://github.com/jesseduffield/lazygit)
-```
-brew install jesseduffield/lazygit/lazygit
 ```
 
 ## Credits
