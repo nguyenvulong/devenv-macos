@@ -11,6 +11,9 @@ GREEN=0xff9ece6a
 YELLOW=0xffe0af68
 ORANGE=0xffff9e64
 RED=0xfff7768e
+PURPLE=0xff9d7cd8
+TEAL=0xff1abc9c
+PINK=0xfff5a97f
 BAR_COLOR=0xff1a1b26
 COMMENT=0xff565f89
 

@@ -35,20 +35,19 @@ sketchybar --bar height=30 \
 
 # Left
 # source "$ITEM_DIR/apple.sh"
-source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Center (of notch)
 source "$ITEM_DIR/spotify.sh"
 
 # Right
+source "$ITEM_DIR/network.sh"
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/cpu.sh"
+# source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/weather.sh"
-
 #################### Finalizing Setup ####################
 
 sketchybar --hotload true
