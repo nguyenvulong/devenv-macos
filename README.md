@@ -1,12 +1,15 @@
+# Development environment for macOS users
+
 ## Introduction
 
-This repository contains my personal dotfiles for setting up a development environment on macOS, which includes configurations for:
+My personal dotfiles for setting up a development environment on macOS
 
-- [WezTerm](https://wezterm.org) (if you are new to Terminal and prefer built-in AI features in CLI, use [Warp](https://app.warp.dev/referral/REQYP5) instead).
-  A default MacOS Terminal should work, too.
-- Zsh shell with Oh My Zsh
-- Neovim (with LazyVim)
-- Vim
+- Terminal
+  - [Warp](https://app.warp.dev/referral/REQYP5), for built-in AI features, or
+  - [WezTerm](https://wezterm.org), for complete control
+- Shell
+  - Zsh shell with Oh My Zsh
+- Neovim (with LazyVim) and vim
 - Sketchybar
 
 | Sketchybar                                                   | WezTerm, Warp                                                | Neovim, LazyGit                                                   | Tmux                                                          |
@@ -58,8 +61,6 @@ The Zsh configuration includes:
   - zsh-syntax-highlighting
   - zsh-autosuggestions
 
-#### Installation
-
 1. Install Oh My Zsh:
 
 ```bash
@@ -101,14 +102,6 @@ cp $(brew --prefix)/share/sketchybar/examples/sketchybarrc ~/.config/sketchybar/
 cp -r $(brew --prefix)/share/sketchybar/examples/plugins/ ~/.config/sketchybar/plugins/
 ```
 
-### Others
-
-- [Rust](https://www.rust-lang.org/)
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
 ## Credits
 
 The configurations builds upon these amazing projects:
@@ -129,4 +122,3 @@ Special thanks to these individuals for sharing the config files and writing.
 ## License
 
 This project is licensed under the MIT.
-
