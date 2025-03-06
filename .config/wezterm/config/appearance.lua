@@ -47,7 +47,7 @@ return {
    initial_cols = 100,
    adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
-   window_decorations = 'RESIZE',
+   window_decorations = 'NONE',
    window_frame = {
       active_titlebar_bg = '#090909',
       -- font = fonts.font,
