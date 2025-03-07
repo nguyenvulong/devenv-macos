@@ -2,8 +2,8 @@
 
 # general
 theme = catppuccin-mocha
-font-family = Iosevka Term Nerd Font
-font-size = 14.5
+font-family = Fira Mono Nerd Font
+font-size = 15
 
 # clipboard
 clipboard-read = allow
