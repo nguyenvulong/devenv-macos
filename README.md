@@ -5,8 +5,9 @@
 My personal dotfiles for setting up a development environment on macOS
 
 - Terminal
+  - [Ghostty](http://ghostty.org), the elegant Zig-based terminal, or
   - [Warp](https://app.warp.dev/referral/REQYP5), for built-in AI features, or
-  - [WezTerm](https://wezterm.org), for complete control
+  - [WezTerm](https://wezterm.org), for multiplexing enthusiasts
 - Shell
   - Zsh shell with Oh My Zsh
 - Neovim (with LazyVim) and vim
