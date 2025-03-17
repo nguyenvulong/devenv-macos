@@ -2,8 +2,9 @@
 
 # general
 theme = catppuccin-mocha
-font-family = Fira Mono Nerd Font
+font-family = JetBrainsMono Nerd Font 
 font-size = 15
+font-thicken = true
 
 # clipboard
 clipboard-read = allow

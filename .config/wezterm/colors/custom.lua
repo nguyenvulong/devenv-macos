@@ -39,22 +39,22 @@ local colorscheme = {
    selection_fg = mocha.text,
    ansi = {
       '#0C0C0C', -- black
-      '#C50F1F', -- red
+      '#EB6105', -- orange
       '#13A10E', -- green
       '#C19C00', -- yellow
-      '#0067DA', -- blue
-      '#881798', -- magenta/purple
-      '#3A96DD', -- cyan
+      '#079AF5', -- blue
+      '#9624d4', -- magenta/purple
+      '#02D1CA', -- cyan
       '#CCCCCC', -- white
    },
    brights = {
       '#767676', -- black
-      '#E74856', -- red
+      '#F57520', -- red
       '#16C60C', -- green
       '#F9F1A5', -- yellow
-      '#3B78FF', -- blue
+      '#4CB4F5', -- blue
       '#B4009E', -- magenta/purple
-      '#61D6D6', -- cyan
+      '#05F7EF', -- cyan
       '#F2F2F2', -- white
    },
    tab_bar = {
