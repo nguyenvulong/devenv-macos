@@ -40,7 +40,7 @@ local colorscheme = {
    ansi = {
       '#0C0C0C', -- black
       '#EB6105', -- orange
-      '#13A10E', -- green
+      '#02F557', -- green
       '#C19C00', -- yellow
       '#079AF5', -- blue
       '#9624d4', -- magenta/purple
@@ -50,7 +50,7 @@ local colorscheme = {
    brights = {
       '#767676', -- black
       '#F57520', -- red
-      '#16C60C', -- green
+      '#A4F502', -- green
       '#F9F1A5', -- yellow
       '#4CB4F5', -- blue
       '#B4009E', -- magenta/purple

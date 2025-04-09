@@ -179,6 +179,10 @@ local keys = {
    { key = 'w',     mods = mod.SUPER,     action = act.CloseCurrentPane({ confirm = false }) },
 
    -- panes: navigation
+   { key = 'UpArrow',     mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Up') },
+   { key = 'DownArrow',     mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Down') },
+   { key = 'LeftArrow',     mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Left') },
+   { key = 'RightArrow',     mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Right') },
    { key = 'k',     mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Up') },
    { key = 'j',     mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Down') },
    { key = 'h',     mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Left') },
@@ -206,6 +210,16 @@ local keys = {
          timemout_miliseconds = 1000,
       }),
    },
+  {
+    key = '=',
+    mods = 'SUPER',
+    action = act.IncreaseFontSize,
+  },
+  {
+    key = '-',
+    mods = 'SUPER',
+    action = act.DecreaseFontSize,
+  },
    -- resize panes
    {
       key = 'p',
@@ -221,6 +235,8 @@ local keys = {
 -- stylua: ignore
 local key_tables = {
    resize_font = {
+      { key = 'k',      action = act.IncreaseFontSize },
+      { key = 'j',      action = act.DecreaseFontSize },
       { key = 'k',      action = act.IncreaseFontSize },
       { key = 'j',      action = act.DecreaseFontSize },
       { key = 'r',      action = act.ResetFontSize },
@@ -249,7 +265,7 @@ local mouse_bindings = {
 return {
    disable_default_key_bindings = true,
    -- disable_default_mouse_bindings = true,
-   leader = { key = 'Space', mods = mod.SUPER_REV },
+   leader = { key = 'a', mods = mod.SUPER_REV, timemout_miliseconds = 1000 },
    keys = keys,
    key_tables = key_tables,
    mouse_bindings = mouse_bindings,
