@@ -131,6 +131,11 @@ export PATH=$GEM_HOME/bin:$PATH
 export PATH="$PATH:$HOME/.gem/ruby/3.4.0/bin"
 export PATH="$PATH:/opt/homebrew/opt/ruby/bin"
 
+# Nodejs
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
 # Rust
 source "$HOME/.cargo/env"
 
@@ -144,8 +149,10 @@ alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/long
 # Aliases
 alias v="nvim"
 alias vd="nvim -d"
-alias cat="BAT_THEME=DarkNeon bat"
+alias cat="BAT_THEME=DarkNeon bat --paging=never --plain"
 alias ls="eza --icons=always"
+alias ll="eza -lh"
+alias l="eza -lah --classify --grid"
 alias tree="eza --tree"
 
 # Terminal
