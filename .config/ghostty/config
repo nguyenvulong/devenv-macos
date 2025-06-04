@@ -2,7 +2,7 @@
 
 # general
 theme = catppuccin-mocha
-font-family = "Hack Nerd Font Mono"
+font-family = "JetBrains Nerds Font Mono"
 font-size = 15
 font-thicken = false
 
