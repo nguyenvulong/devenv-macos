@@ -26,8 +26,8 @@ Before installing these dotfiles, ensure you have the following installed:
 
 - Git
 - Homebrew
-- Zsh (default shell for macOS)
-- Oh-my-zsh
+- Zsh (default shell for macOS) or Fish
+- Oh-my-zsh or Starship
 
 ### Package Dependencies
 
@@ -44,12 +44,19 @@ brew bundle install
 To update the Brewfile with your current packages:
 
 ```bash
-brew bundle dump
+brew bundle dump --force
 ```
 
 ## Components
 
-### Shell (Zsh)
+### Shell (Fish) - recommended
+
+If you are new, you can skip all the hassles with Zsh below.
+After `brew bundle install`, just execute `fish` and confirm the settings for the first time.
+Make sure to check the configuration in `~/.config/fish/config.fish` and `~/.config/starship.toml`,
+then you're good to go.
+
+### Shell (Zsh) - if you prefer using Zsh over Fish
 
 The Zsh configuration includes:
 
@@ -109,10 +116,11 @@ The configurations builds upon these amazing projects:
 
 - [Neovim](https://github.com/neovim/neovim) - Hyperextensible Vim-based text editor
 - [LazyVim](https://github.com/LazyVim/LazyVim) - Neovim config for the lazy
-- [WezTerm](https://github.com/wez/wezterm) - A GPU-accelerated cross-platform terminal emulator
+- [WezTerm](https://github.com/wez/wezterm) and [Ghostty](https://ghostty.org) - GPU-accelerated cross-platform terminal emulators
 - [Sketchybar](https://github.com/FelixKratz/SketchyBar) - A highly customizable macOS status bar replacement
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - A delightful community-driven framework for Zsh
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - A fast and feature-rich Zsh theme
+- [Starship](http://starship.rs) - A minimal, blazing-fast, and infinitely customizable prompt for any shell
 
 Special thanks to these individuals for sharing the config files and writing.
 
