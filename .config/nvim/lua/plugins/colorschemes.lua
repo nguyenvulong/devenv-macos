@@ -11,4 +11,10 @@ return {
     priority = 1000,
     lazy = false,
   },
+  {
+    "AhmedAbdulrahman/vim-aylin",
+    name = "aylin",
+    priority = 1000,
+    lazy = false,
+  },
 }

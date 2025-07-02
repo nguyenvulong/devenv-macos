@@ -2,9 +2,9 @@
 
 # general
 theme = catppuccin-mocha
-font-family = "JetBrains Nerds Font Mono"
+font-family = "FiraMono Nerd Font Mono""
 font-size = 15
-font-thicken = false
+font-thicken = true
 
 # clipboard
 clipboard-read = allow
