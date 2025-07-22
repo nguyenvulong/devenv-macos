@@ -17,4 +17,10 @@ return {
     priority = 1000,
     lazy = false,
   },
+  {
+    "sainnhe/sonokai",
+    name = "sonokai",
+    priority = 1000,
+    lazy = false,
+  },
 }
