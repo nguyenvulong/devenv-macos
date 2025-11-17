@@ -5,11 +5,13 @@
 My personal dotfiles for setting up a development environment on macOS
 
 - Terminal
-  - [Ghostty](http://ghostty.org), the elegant Zig-based terminal, or
   - [Warp](https://app.warp.dev/referral/REQYP5), for built-in AI features, or
+  - [Ghostty](http://ghostty.org), the elegant Zig-based terminal, or
   - [WezTerm](https://wezterm.org), for multiplexing enthusiasts
 - Shell
+  - Fish shell
   - Zsh shell with Oh My Zsh
+  - Nushell
 - Neovim (with LazyVim) and vim
 - Sketchybar
 
@@ -41,7 +43,7 @@ All required packages are managed through Homebrew Bundle. To install all depend
 brew bundle install
 ```
 
-To update the Brewfile with your current packages:
+To create a new Brewfile with your current packages:
 
 ```bash
 brew bundle dump --force
@@ -55,6 +57,15 @@ If you are new, you can skip all the hassles with Zsh below.
 After `brew bundle install`, just execute `fish` and confirm the settings for the first time.
 Make sure to check the configuration in `~/.config/fish/config.fish` and `~/.config/starship.toml`,
 then you're good to go.
+
+In order to set fish as a login shell
+
+```
+sudo sh -c 'echo /opt/homebrew/bin/fish >> /etc/shells'
+chsh -s /opt/homebrew/bin/fish
+```
+
+Then restart your terminal.
 
 ### Shell (Zsh) - if you prefer using Zsh over Fish
 
