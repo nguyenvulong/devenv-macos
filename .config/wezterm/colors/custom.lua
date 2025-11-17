@@ -12,8 +12,8 @@ local kolors = {
   green      = '#9ece6a',
   teal       = '#449dab',
   sky        = '#7dcfff',
-  sapphire   = '#7dcfff',
-  blue       = '#7aa2f7',
+  sapphire   = '#086efc',
+  blue       = '#0841fc',
   lavender   = '#bb9af7',
   text       = '#c0caf5',
   subtext1   = '#a9b1d6',
@@ -41,7 +41,7 @@ local colorscheme = {
       '#0C0C0C', -- black
       '#EB6105', -- orange
       '#02F557', -- green
-      '#C19C00', -- yellow
+      '#FCE803', -- yellow
       '#079AF5', -- blue
       '#9624d4', -- magenta/purple
       '#02D1CA', -- cyan
@@ -52,9 +52,9 @@ local colorscheme = {
       '#F57520', -- red
       '#A4F502', -- green
       '#F9F1A5', -- yellow
-      '#4CB4F5', -- blue
+      '#0596F7', -- blue
       '#B4009E', -- magenta/purple
-      '#05F7EF', -- cyan
+      '#05CBF7', -- cyan
       '#F2F2F2', -- white
    },
    tab_bar = {
