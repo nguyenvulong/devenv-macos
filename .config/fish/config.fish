@@ -2,10 +2,12 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-starship init fish | source
-
 #
-set PATH $PATH /home/longnv/.local/bin
+set PATH $PATH /Users/longnv/.local/bin
+set PATH $PATH /opt/homebrew/bin
+set PATH $PATH /opt/homebrew/opt/libpq/bin
+
+starship init fish | source
 
 # Config for dotfiles
 alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
