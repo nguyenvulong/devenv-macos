@@ -3,9 +3,10 @@ if status is-interactive
 end
 
 #
-set PATH $PATH /Users/longnv/.local/bin
-set PATH $PATH /opt/homebrew/bin
-set PATH $PATH /opt/homebrew/opt/libpq/bin
+set PATH /Users/longnv/.local/bin $PATH
+set PATH /opt/homebrew/bin $PATH
+set PATH /opt/homebrew/sbin $PATH
+set PATH /opt/homebrew/opt/libpq/bin $PATH
 
 starship init fish | source
 
@@ -26,3 +27,6 @@ alias cat='BAT_THEME=Dracula bat --paging=never --plain'
 function history
     builtin history --show-time="%Y-%m-%d %H:%M:%S " $argv
 end
+
+# Added by Antigravity
+fish_add_path /Users/longnv/.antigravity/antigravity/bin
