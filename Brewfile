@@ -73,7 +73,7 @@ brew "dos2unix"
 brew "eza"
 brew "fastfetch"
 brew "fd"
-brew "fish"
+
 brew "fortune"
 brew "fribidi"
 brew "fzf"
