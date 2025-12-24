@@ -9,9 +9,8 @@ My personal dotfiles for setting up a development environment on macOS
   - [Ghostty](http://ghostty.org), the elegant Zig-based terminal, or
   - [WezTerm](https://wezterm.org), for multiplexing enthusiasts
 - Shell
-  - Fish shell
-  - Zsh shell with Oh My Zsh
-  - Nushell
+  - Fish
+  - Zsh (default shell for macOS, check zsh branch)
 - Neovim (with LazyVim) and vim
 - Sketchybar
 
@@ -22,24 +21,16 @@ My personal dotfiles for setting up a development environment on macOS
 
 ## Prerequisites
 
-Before installing these dotfiles, ensure you have the following installed:
+Install Homebrew if you haven't already
 
-### Required Tools
-
-- Git
-- Homebrew
-- Zsh (default shell for macOS) or Fish
-- Oh-my-zsh or Starship
-
-### Package Dependencies
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 All required packages are managed through Homebrew Bundle. To install all dependencies:
 
 ```bash
-# Install Homebrew if you haven't already
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install all dependencies from Brewfile
+cd devenv-macos
 brew bundle install
 ```
 
@@ -49,11 +40,12 @@ To create a new Brewfile with your current packages:
 brew bundle dump --force
 ```
 
+Make sure to use your username in `.config/fish/config.fish` and `~/.config/fish/fish_variables`.
+
 ## Components
 
-### Shell (Fish) - recommended
+### Fish
 
-If you are new, you can skip all the hassles with Zsh below.
 After `brew bundle install`, just execute `fish` and confirm the settings for the first time.
 Make sure to check the configuration in `~/.config/fish/config.fish` and `~/.config/starship.toml`,
 then you're good to go.
@@ -66,39 +58,6 @@ chsh -s /opt/homebrew/bin/fish
 ```
 
 Then restart your terminal.
-
-### Shell (Zsh) - if you prefer using Zsh over Fish
-
-The Zsh configuration includes:
-
-- Oh My Zsh as the framework
-- Powerlevel10k theme
-- Plugins:
-  - kubectl
-  - git
-  - fzf-tab
-  - zsh-syntax-highlighting
-  - zsh-autosuggestions
-
-1. Install Oh My Zsh:
-
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-2. Install Powerlevel10k theme:
-
-```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
-3. Install additional plugins:
-
-```bash
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
-```
 
 ### Neovim
 
