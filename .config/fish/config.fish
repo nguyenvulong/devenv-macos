@@ -10,6 +10,9 @@ set PATH /opt/homebrew/opt/libpq/bin $PATH
 
 starship init fish | source
 
+# Node
+fnm env --use-on-cd --shell fish | source
+
 # Config for dotfiles
 alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
 
@@ -23,6 +26,8 @@ alias vim='v'
 alias v='nvim'
 alias vd='nvim -d'
 alias cat='BAT_THEME=Dracula bat --paging=never --plain'
+
+alias nvm='fnm'
 
 function history
     builtin history --show-time="%Y-%m-%d %H:%M:%S " $argv
