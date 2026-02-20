@@ -34,4 +34,4 @@ function history
 end
 
 # Added by Antigravity
-fish_add_path /Users/longnv/.antigravity/antigravity/bin
+fish_add_path /Users/longnv/.antigravity/antigravity/bin; or true

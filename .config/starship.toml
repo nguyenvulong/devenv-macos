@@ -1,5 +1,8 @@
 [aws]
-symbol = "  "
+disabled = true
+
+[gcloud]
+disabled = true
 
 [buf]
 symbol = " "
@@ -46,8 +49,6 @@ symbol = " "
 [fossil_branch]
 symbol = " "
 
-[gcloud]
-symbol = "  "
 
 [git_branch]
 symbol = " "
