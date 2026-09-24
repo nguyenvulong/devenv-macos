@@ -13,6 +13,7 @@ clipboard-write = allow
 # key bindings
 keybind = super+right_bracket=next_tab
 keybind = super+left_bracket=previous_tab
+macos-option-as-alt = true
 
 # mouse
 mouse-hide-while-typing = true
