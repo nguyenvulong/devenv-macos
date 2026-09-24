@@ -6,15 +6,14 @@ My personal dotfiles for setting up a development environment on macOS
 
 - Terminal
   - [Warp](https://app.warp.dev/referral/REQYP5), for built-in AI features, or
-  - [Ghostty](http://ghostty.org), the elegant Zig-based terminal, or
-  - [WezTerm](https://wezterm.org), for multiplexing enthusiasts
+  - [Ghostty](http://ghostty.org), the elegant Zig-based terminal
 - Shell
   - Fish
   - Zsh (default shell for macOS, check zsh branch)
 - Neovim (with LazyVim) and vim
 - Sketchybar
 
-| Sketchybar                                                   | WezTerm, Warp                                                | Neovim, LazyGit                                                   | Tmux                                                          |
+| Sketchybar                                                   | Warp                                                         | Neovim, LazyGit                                                   | Tmux                                                          |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------- |
 | <img src="./assets/shell-1.png" width="200" height="150" />  | <img src="./assets/neovim-1.png" width="200" height="150" /> | <img src="./assets/tmux-1.png" width="200" height="150" />        | <img src="./assets/lazygit-1.png" width="200" height="150" /> |
 | <img src="./assets/neovim-2.png" width="200" height="150" /> | <img src="./assets/shell-2.png" width="200" height="150" />  | <img src="./assets/vscode_tmux-1.png" width="200" height="150" /> | <img src="./assets/warp-1.png" width="200" height="150" />    |
@@ -86,7 +85,7 @@ The configurations builds upon these amazing projects:
 
 - [Neovim](https://github.com/neovim/neovim) - Hyperextensible Vim-based text editor
 - [LazyVim](https://github.com/LazyVim/LazyVim) - Neovim config for the lazy
-- [WezTerm](https://github.com/wez/wezterm) and [Ghostty](https://ghostty.org) - GPU-accelerated cross-platform terminal emulators
+- [Ghostty](https://ghostty.org) - GPU-accelerated cross-platform terminal emulator
 - [Sketchybar](https://github.com/FelixKratz/SketchyBar) - A highly customizable macOS status bar replacement
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - A delightful community-driven framework for Zsh
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - A fast and feature-rich Zsh theme

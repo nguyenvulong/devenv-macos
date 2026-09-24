@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 #
-set PATH /Users/longnv/.local/bin $PATH
+set PATH $HOME/.local/bin $PATH
 set PATH /opt/homebrew/bin $PATH
 set PATH /opt/homebrew/sbin $PATH
 set PATH /opt/homebrew/opt/libpq/bin $PATH
@@ -14,7 +14,7 @@ starship init fish | source
 fnm env --use-on-cd --shell fish | source
 
 # Config for dotfiles
-alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # aliases
 alias ls='eza --icons=always'
@@ -32,6 +32,3 @@ alias nvm='fnm'
 function history
     builtin history --show-time="%Y-%m-%d %H:%M:%S " $argv
 end
-
-# Added by Antigravity
-fish_add_path /Users/longnv/.antigravity/antigravity/bin; or true
