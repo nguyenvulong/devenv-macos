@@ -37,9 +37,21 @@ git clone https://github.com/nguyenvulong/devenv-macos.git ~/devenv-macos
 cd ~/devenv-macos
 ```
 
-### 3. Install the packages
+### 3. Run the install script
 
-All required packages are managed through Homebrew Bundle:
+```bash
+./install.sh            # install Homebrew packages and link the configs
+./install.sh --dry-run  # preview what would change
+./install.sh --shell    # also set fish as the login shell
+```
+
+The script installs everything in the `Brewfile` and symlinks `fish`, `ghostty`, `nvim`, `sketchybar`,
+`starship.toml` and `.vimrc` into your home directory. Existing files are moved to
+`~/.dotfiles-backup/<timestamp>/` first, and running it again is safe. Run `./install.sh --help` for all options.
+
+### 4. (Optional) Manage packages yourself
+
+If you'd rather not use the script, install the packages with Homebrew Bundle:
 
 ```bash
 brew bundle install
@@ -51,26 +63,13 @@ To regenerate the Brewfile from your current packages:
 brew bundle dump --force
 ```
 
-### 4. Link the dotfiles
-
-Symlink the configs into your home directory (back up any existing files first):
-
-```bash
-mkdir -p ~/.config
-for dir in fish ghostty nvim sketchybar; do
-  ln -sfn ~/devenv-macos/.config/$dir ~/.config/$dir
-done
-ln -sf ~/devenv-macos/.config/starship.toml ~/.config/starship.toml
-ln -sf ~/devenv-macos/.vimrc ~/.vimrc
-```
-
 ### 5. Set up fish as your shell
 
 After the install, just execute `fish` and confirm the settings for the first time.
 Make sure to check the configuration in `~/.config/fish/config.fish` and `~/.config/starship.toml`,
 then you're good to go.
 
-To set fish as a login shell:
+To set fish as a login shell (or run `./install.sh --shell`):
 
 ```bash
 echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells
@@ -90,11 +89,13 @@ The Neovim configuration uses LazyVim as the base with additional customizations
 - Extra plugins: undotree (`<leader>U`), rainbow_csv, markdown-preview
 - Clipboard: system clipboard locally, OSC 52 over SSH
 
-Plugins are installed automatically the first time you start `nvim`.
+Plugins are installed automatically the first time you start `nvim`. Plugin versions are pinned in
+`lazy-lock.json`; run `:Lazy restore` to install exactly those versions, or `:Lazy update` to upgrade them
+and commit the updated lock file.
 
 ### 7. Start Sketchybar
 
-The Sketchybar config is already linked in step 4, so just start the service:
+The Sketchybar config is already linked by the install script, so just start the service:
 
 ```bash
 brew services start sketchybar

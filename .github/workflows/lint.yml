@@ -1,0 +1,59 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ShellCheck
+        run: |
+          shellcheck --version
+          shellcheck install.sh \
+            .config/sketchybar/sketchybarrc \
+            .config/sketchybar/*.sh \
+            .config/sketchybar/items/*.sh \
+            .config/sketchybar/plugins/*.sh
+
+  fish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install fish
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fish
+      - name: Check fish syntax
+        run: |
+          for f in $(find .config/fish -name '*.fish'); do
+            echo "checking $f"
+            fish --no-execute "$f"
+          done
+
+  stylua:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: JohnnyMorganz/stylua-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
+          args: --check .config/nvim
+
+  install-script:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dry run
+        run: HOME="$(mktemp -d)" ./install.sh --no-brew --dry-run
+      - name: Link into a temporary home, twice
+        run: |
+          export HOME="$(mktemp -d)"
+          ./install.sh --no-brew
+          ./install.sh --no-brew | grep -q "ok .*\.vimrc"
+          test "$(readlink "$HOME/.config/nvim")" = "$PWD/.config/nvim"
