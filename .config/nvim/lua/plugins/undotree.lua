@@ -1,8 +1,9 @@
 return {
   {
     "mbbill/undotree",
-    name = "undotree",
-    priority = 1000,
-    lazy = false,
+    cmd = "UndotreeToggle",
+    keys = {
+      { "<leader>U", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" },
+    },
   },
 }

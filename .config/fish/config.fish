@@ -1,34 +1,37 @@
+# PATH (--move keeps these ahead of entries already set by path_helper)
+fish_add_path --move --path /opt/homebrew/opt/libpq/bin /opt/homebrew/sbin /opt/homebrew/bin $HOME/.local/bin
+
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+    if type -q starship
+        starship init fish | source
+    end
 
-#
-set PATH $HOME/.local/bin $PATH
-set PATH /opt/homebrew/bin $PATH
-set PATH /opt/homebrew/sbin $PATH
-set PATH /opt/homebrew/opt/libpq/bin $PATH
+    # Node
+    if type -q fnm
+        fnm env --use-on-cd --shell fish | source
+        alias nvm='fnm'
+    end
 
-starship init fish | source
+    # Config for dotfiles
+    alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# Node
-fnm env --use-on-cd --shell fish | source
+    # aliases
+    if type -q eza
+        alias ls='eza --icons=always'
+        alias ll='eza -lah'
+        alias l='eza -lah --classify --grid'
+    end
+    alias la='ls -a'
 
-# Config for dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+    alias v='nvim'
+    alias vim='nvim'
+    alias vd='nvim -d'
 
-# aliases
-alias ls='eza --icons=always'
-alias la='ls -a'
-alias ll='eza -lah'
-alias l='eza -lah --classify --grid'
+    if type -q bat
+        alias cat='BAT_THEME=Dracula bat --paging=never --plain'
+    end
 
-alias vim='v'
-alias v='nvim'
-alias vd='nvim -d'
-alias cat='BAT_THEME=Dracula bat --paging=never --plain'
-
-alias nvm='fnm'
-
-function history
-    builtin history --show-time="%Y-%m-%d %H:%M:%S " $argv
+    function history
+        builtin history --show-time="%Y-%m-%d %H:%M:%S " $argv
+    end
 end
