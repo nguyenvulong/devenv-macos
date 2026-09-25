@@ -1,9 +1,9 @@
 "
 " General config, do not include a closing quote
 "
+set nocompatible
 set nu
 set hlsearch
-set nocompatible
 set encoding=utf-8
 set ts=4
 set expandtab
@@ -36,3 +36,5 @@ call plug#end()
 if has("syntax")
   syntax on
 endif
+
+silent! colorscheme catppuccin_mocha
