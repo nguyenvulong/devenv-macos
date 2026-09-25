@@ -1,92 +1,86 @@
-# Development environment for macOS users
+# Development environment for macOS users (zsh edition)
 
 ## Introduction
 
-My personal dotfiles for setting up a development environment on macOS
+My personal dotfiles for setting up a development environment on macOS.
+
+> This is the **zsh** branch. It is no longer actively maintained; the
+> [main branch](https://github.com/nguyenvulong/devenv-macos) uses fish and gets new updates.
 
 - Terminal
+  - [cmux](https://www.cmux.dev/), the Ghostty-based terminal for AI coding agents, or
   - [Warp](https://app.warp.dev/referral/REQYP5), for built-in AI features, or
-  - [Ghostty](http://ghostty.org), the elegant Zig-based terminal, or
-  - [WezTerm](https://wezterm.org), for multiplexing enthusiasts
-- Shell
-
-  - Zsh shell with Oh My Zsh
-  - Nushell
+  - [Ghostty](https://ghostty.org), the elegant Zig-based terminal
+- Shell: Zsh (the macOS default) with the Starship prompt, autosuggestions and syntax highlighting
 - Neovim (with LazyVim) and vim
 - Sketchybar
 
-| Sketchybar                                                   | WezTerm, Warp                                                | Neovim, LazyGit                                                   | Tmux                                                          |
+| Shell                                                        | Neovim                                                       | Tmux                                                              | LazyGit                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------- |
 | <img src="./assets/shell-1.png" width="200" height="150" />  | <img src="./assets/neovim-1.png" width="200" height="150" /> | <img src="./assets/tmux-1.png" width="200" height="150" />        | <img src="./assets/lazygit-1.png" width="200" height="150" /> |
-| <img src="./assets/neovim-2.png" width="200" height="150" /> | <img src="./assets/shell-2.png" width="200" height="150" />  | <img src="./assets/vscode_tmux-1.png" width="200" height="150" /> | <img src="./assets/warp-1.png" width="200" height="150" />    |
+| **Shell**                                                    | **Neovim**                                                   | **VS Code + Tmux**                                                | **Warp**                                                      |
+| <img src="./assets/shell-2.png" width="200" height="150" />  | <img src="./assets/neovim-2.png" width="200" height="150" /> | <img src="./assets/vscode_tmux-1.png" width="200" height="150" /> | <img src="./assets/warp-1.png" width="200" height="150" />    |
 
-## Prerequisites
+## Getting started
 
-Before installing these dotfiles, ensure you have the following installed:
+### 1. Install Homebrew
 
-### Required Tools
-
-- Git
-- Homebrew
-- Zsh (default shell for macOS)
-- Oh-my-zsh or Starship
-
-### Package Dependencies
-
-All required packages are managed through Homebrew Bundle. To install all dependencies:
+If you don't have Homebrew yet:
 
 ```bash
-# Install Homebrew if you haven't already
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-# Install all dependencies from Brewfile
+### 2. Clone the repository
+
+```bash
+git clone --branch zsh https://github.com/nguyenvulong/devenv-macos.git ~/devenv-macos
+cd ~/devenv-macos
+```
+
+### 3. Run the install script
+
+```bash
+./install.sh            # install Homebrew packages and link the configs
+./install.sh --dry-run  # preview what would change
+```
+
+The script installs everything in the `Brewfile` and symlinks `.zshrc`, `ghostty`, `nvim`, `sketchybar`,
+`starship.toml` and `.vimrc` into your home directory. Existing files are moved to
+`~/.dotfiles-backup/<timestamp>/` first, and running it again is safe. Run `./install.sh --help` for all options.
+
+### 4. (Optional) Manage packages yourself
+
+If you'd rather not use the script, install the packages with Homebrew Bundle:
+
+```bash
 brew bundle install
 ```
 
-To create a new Brewfile with your current packages:
+To regenerate the Brewfile from your current packages:
 
 ```bash
 brew bundle dump --force
 ```
 
-## Components
+### 5. Start using zsh
 
+Zsh is already the default shell on macOS, so just open a new terminal (or run `exec zsh`).
+If you changed your login shell before, switch back with `chsh -s /bin/zsh`.
 
+`~/.zshrc` sets up:
 
-### Shell (Zsh)
+- Prompt: [Starship](https://starship.rs), configured in `~/.config/starship.toml`
+- Plugins from Homebrew: zsh-autosuggestions, zsh-syntax-highlighting and zsh-completions
+- fzf key bindings: `Ctrl-R` searches history, `Ctrl-T` finds files, `Alt-C` changes directory
+- Node version switching with fnm (reads `.nvmrc` / `.node-version` when you `cd`)
+- A large shared history with timestamps (`history` shows them)
+- Aliases: `ls`/`ll`/`l`/`tree` (eza), `cat` (bat), `v`/`vim` (Neovim)
 
-The Zsh configuration includes:
+Put machine-specific settings (API keys, extra `PATH` entries, work aliases) in `~/.zshrc.local`.
+It is loaded at the end of `~/.zshrc` and is not part of this repository.
 
-- Oh My Zsh as the framework
-- Powerlevel10k theme
-- Plugins:
-  - kubectl
-  - git
-  - fzf-tab
-  - zsh-syntax-highlighting
-  - zsh-autosuggestions
-
-1. Install Oh My Zsh:
-
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-2. Install Powerlevel10k theme:
-
-```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
-3. Install additional plugins:
-
-```bash
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
-```
-
-### Neovim
+### 6. Configure Neovim
 
 The Neovim configuration uses LazyVim as the base with additional customizations:
 
@@ -94,37 +88,39 @@ The Neovim configuration uses LazyVim as the base with additional customizations
 - Theme: tokyonight-moon
 - LSP support for multiple languages
 - Various coding and UI enhancements
+- Extra plugins: undotree (`<leader>U`), rainbow_csv, markdown-preview
+- Clipboard: system clipboard locally, OSC 52 over SSH
 
-Follow the instruction from [LazyVim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes).
+Plugins are installed automatically the first time you start `nvim`. Plugin versions are pinned in
+`lazy-lock.json`; run `:Lazy restore` to install exactly those versions, or `:Lazy update` to upgrade them
+and commit the updated lock file.
 
-### Sketchybar
+### 7. Start Sketchybar
 
-Customize your MacOS's menu bar.
+The Sketchybar config is already linked by the install script, so just start the service:
 
 ```bash
-mkdir -p ~/.config/sketchybar/plugins
-cp $(brew --prefix)/share/sketchybar/examples/sketchybarrc ~/.config/sketchybar/sketchybarrc
-cp -r $(brew --prefix)/share/sketchybar/examples/plugins/ ~/.config/sketchybar/plugins/
+brew services start sketchybar
 ```
+
+To hide the default macOS menu bar, enable **System Settings → Control Center → Automatically hide and show the menu bar → Always**.
 
 ## Credits
 
-The configurations builds upon these amazing projects:
+The configurations build upon these amazing projects:
 
 - [Neovim](https://github.com/neovim/neovim) - Hyperextensible Vim-based text editor
 - [LazyVim](https://github.com/LazyVim/LazyVim) - Neovim config for the lazy
-- [WezTerm](https://github.com/wez/wezterm) and [Ghostty](https://ghostty.org) - GPU-accelerated cross-platform terminal emulators
+- [Ghostty](https://ghostty.org) - GPU-accelerated cross-platform terminal emulator
 - [Sketchybar](https://github.com/FelixKratz/SketchyBar) - A highly customizable macOS status bar replacement
-- [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - A delightful community-driven framework for Zsh
-- [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - A fast and feature-rich Zsh theme
-- [Starship](http://starship.rs) - A minimal, blazing-fast, and infinitely customizable prompt for any shell
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) and [zsh-completions](https://github.com/zsh-users/zsh-completions)
+- [Starship](https://starship.rs) - A minimal, blazing-fast, and infinitely customizable prompt for any shell
 
 Special thanks to these individuals for sharing the config files and writing.
 
-- KevinSilvester: [wezterm-config](https://github.com/KevinSilvester/wezterm-config)
 - Michael Bao: [tcmmichaelb139/.dotfiles](https://github.com/tcmmichaelb139/.dotfiles)
 - Dusty Phillips: [LazyVim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes)
 
 ## License
 
-This project is licensed under the MIT.
+This project is licensed under the [MIT License](./LICENSE).
