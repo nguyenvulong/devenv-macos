@@ -1,2 +1,4 @@
-disable=SC2034,MD013
-shell=fish
+shell=bash
+# SC1091: sourced files (e.g. variables.sh) are resolved at runtime via $HOME.
+# SC2034: color variables are defined in variables.sh and consumed by sourced item scripts.
+disable=SC1091,SC2034

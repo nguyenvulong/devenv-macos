@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-VOLUME=$(osascript -e "output volume of (get volume settings)")
-MUTED=$(osascript -e "output muted of (get volume settings)")
+SETTINGS=$(osascript -e "get volume settings")
+VOLUME=$(echo "$SETTINGS" | sed -E 's/.*output volume:([0-9]+|missing value).*/\1/')
+MUTED=$(echo "$SETTINGS" | sed -E 's/.*output muted:(true|false|missing value).*/\1/')
 
-if [ "$MUTED" != "false" ]; then
+if [ "$MUTED" = "true" ] || ! [[ "$VOLUME" =~ ^[0-9]+$ ]]; then
 	ICON="󰖁"
 	VOLUME=0
+elif [ "$VOLUME" -ge 60 ]; then
+	ICON="󰕾"
+elif [ "$VOLUME" -ge 30 ]; then
+	ICON="󰖀"
+elif [ "$VOLUME" -gt 0 ]; then
+	ICON="󰕿"
 else
-	case ${VOLUME} in
-	100) ICON="" ;;
-	[5-9]*) ICON="" ;;
-	[0-9]*) ICON="" ;;
-	*) ICON="" ;;
-	esac
+	ICON="󰖁"
 fi
 
-sketchybar -m \
-	--set "$NAME" icon=$ICON \
-	--set "$NAME" label="$VOLUME%"
+sketchybar --set "$NAME" icon="$ICON" label="$VOLUME%"

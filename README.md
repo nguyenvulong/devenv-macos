@@ -29,12 +29,18 @@ If you don't have Homebrew yet:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### 2. Install the packages
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/nguyenvulong/devenv-macos.git ~/devenv-macos
+cd ~/devenv-macos
+```
+
+### 3. Install the packages
 
 All required packages are managed through Homebrew Bundle:
 
 ```bash
-cd devenv-macos
 brew bundle install
 ```
 
@@ -44,7 +50,20 @@ To regenerate the Brewfile from your current packages:
 brew bundle dump --force
 ```
 
-### 3. Set up fish as your shell
+### 4. Link the dotfiles
+
+Symlink the configs into your home directory (back up any existing files first):
+
+```bash
+mkdir -p ~/.config
+for dir in fish ghostty nvim sketchybar; do
+  ln -sfn ~/devenv-macos/.config/$dir ~/.config/$dir
+done
+ln -sf ~/devenv-macos/.config/starship.toml ~/.config/starship.toml
+ln -sf ~/devenv-macos/.vimrc ~/.vimrc
+```
+
+### 5. Set up fish as your shell
 
 After the install, just execute `fish` and confirm the settings for the first time.
 Make sure to check the configuration in `~/.config/fish/config.fish` and `~/.config/starship.toml`,
@@ -52,14 +71,14 @@ then you're good to go.
 
 To set fish as a login shell:
 
-```
-sudo sh -c 'echo /opt/homebrew/bin/fish >> /etc/shells'
-chsh -s /opt/homebrew/bin/fish
+```bash
+echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells
+chsh -s "$(brew --prefix)/bin/fish"
 ```
 
 Then restart your terminal.
 
-### 4. Configure Neovim
+### 6. Configure Neovim
 
 The Neovim configuration uses LazyVim as the base with additional customizations:
 
@@ -68,13 +87,17 @@ The Neovim configuration uses LazyVim as the base with additional customizations
 - LSP support for multiple languages
 - Various coding and UI enhancements
 
-### 5. Customize your menu bar with Sketchybar
+Plugins are installed automatically the first time you start `nvim`.
+
+### 7. Start Sketchybar
+
+The Sketchybar config is already linked in step 4, so just start the service:
 
 ```bash
-mkdir -p ~/.config/sketchybar/plugins
-cp $(brew --prefix)/share/sketchybar/examples/sketchybarrc ~/.config/sketchybar/sketchybarrc
-cp -r $(brew --prefix)/share/sketchybar/examples/plugins/ ~/.config/sketchybar/plugins/
+brew services start sketchybar
 ```
+
+To hide the default macOS menu bar, enable **System Settings → Control Center → Automatically hide and show the menu bar → Always**.
 
 ## Credits
 
