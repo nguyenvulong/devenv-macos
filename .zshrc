@@ -1,63 +1,84 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# PATH (typeset -U drops duplicates, so nested shells don't grow it)
+typeset -U path fpath
+
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-HIST_STAMPS="yyyy-mm-dd"
-HISTSIZE=1000000
-SAVEHIST=1000000
-setopt APPEND_HISTORY
-setopt EXTENDED_HISTORY
-setopt SHARE_HISTORY
-
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  kubectl
-  git
-  fzf-tab
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+path=(
+  $HOME/.local/bin
+  /opt/homebrew/opt/libpq/bin
+  $path
 )
 
-source $ZSH/oh-my-zsh.sh
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt EXTENDED_HISTORY     # save timestamps
+setopt SHARE_HISTORY        # share history between open shells
+setopt HIST_IGNORE_DUPS     # skip consecutive duplicates
+setopt HIST_IGNORE_SPACE    # skip commands starting with a space
+setopt HIST_REDUCE_BLANKS
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Completion (zsh-completions adds definitions for many extra tools)
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+  fpath=($HOMEBREW_PREFIX/share/zsh-completions $HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+fi
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # case-insensitive
+zstyle ':completion:*' menu select
 
-# Local bin
-export PATH=$PATH:/Users/longnv/.local/bin
+# Emacs-style line editing (Ctrl-A, Ctrl-E, ...)
+bindkey -e
 
-# Ruby
-export GEM_HOME=$HOME/.gem
-export PATH=$GEM_HOME/bin:$PATH
-export PATH="$PATH:$HOME/.gem/ruby/3.4.0/bin"
-export PATH="$PATH:/opt/homebrew/opt/ruby/bin"
+# Prompt
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
 
-# Nodejs
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+# Node
+if (( $+commands[fnm] )); then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+  alias nvm='fnm'
+fi
+
+# fzf key bindings: Ctrl-R history, Ctrl-T files, Alt-C directories
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+fi
 
 # Config for dotfiles
-alias config='/usr/bin/git --git-dir=/Users/longnv/.cfg/ --work-tree=/Users/longnv'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Aliases
-alias v="nvim"
-alias vd="nvim -d"
-alias cat="BAT_THEME=DarkNeon bat --paging=never --plain"
-alias ls="eza --icons=always"
-alias ll="eza -lh"
-alias l="eza -lah --classify --grid"
-alias tree="eza --tree"
+if (( $+commands[eza] )); then
+  alias ls='eza --icons=always'
+  alias ll='eza -lah'
+  alias l='eza -lah --classify --grid'
+  alias tree='eza --tree'
+fi
+alias la='ls -a'
 
-# Terminal
-export TERM=xterm-256color
+alias v='nvim'
+alias vim='nvim'
+alias vd='nvim -d'
 
-# Wezterm
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+if (( $+commands[bat] )); then
+  alias cat='BAT_THEME=Dracula bat --paging=never --plain'
+fi
 
-# Ollama
-export OLLAMA_API_BASE=http://127.0.0.1:11434
+alias history='fc -li 1'
+
+# Plugins (keep zsh-syntax-highlighting last)
+for plugin in zsh-autosuggestions zsh-syntax-highlighting; do
+  if [[ -r $HOMEBREW_PREFIX/share/$plugin/$plugin.zsh ]]; then
+    source $HOMEBREW_PREFIX/share/$plugin/$plugin.zsh
+  fi
+done
+unset plugin
+
+# Machine-specific settings that shouldn't be committed
+if [[ -r ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
