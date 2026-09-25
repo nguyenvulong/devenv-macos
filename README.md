@@ -4,13 +4,13 @@
 
 My personal dotfiles for setting up a development environment on macOS.
 
+> Prefer zsh over fish? Use the [zsh branch](https://github.com/nguyenvulong/devenv-macos/tree/zsh) instead.
+
 - Terminal
   - [cmux](https://www.cmux.dev/), the Ghostty-based terminal for AI coding agents, or
   - [Warp](https://app.warp.dev/referral/REQYP5), for built-in AI features, or
   - [Ghostty](https://ghostty.org), the elegant Zig-based terminal
-- Shell
-  - Fish
-  - Zsh (default shell for macOS, see the [zsh branch](https://github.com/nguyenvulong/devenv-macos/tree/zsh))
+- Shell: Fish with the Starship prompt
 - Neovim (with LazyVim) and vim
 - Sketchybar
 
@@ -113,7 +113,6 @@ The configurations build upon these amazing projects:
 - [Sketchybar](https://github.com/FelixKratz/SketchyBar) - A highly customizable macOS status bar replacement
 - [Fish](https://fishshell.com) - The user-friendly command line shell
 - [Starship](https://starship.rs) - A minimal, blazing-fast, and infinitely customizable prompt for any shell
-- [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) and [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - used by the [zsh branch](https://github.com/nguyenvulong/devenv-macos/tree/zsh)
 
 Special thanks to these individuals for sharing the config files and writing.
 
